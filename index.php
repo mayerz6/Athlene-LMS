@@ -1,20 +1,6 @@
-<?php
 
-    $nav_links = [
-        'homepage' => '/',
-        'about' => '/about',
-        'contact' => '/contact',
-        'services' => '/services',
-        'resources' => '/resources',
-        'account' => '/acount-login',
-        'booklist' => '/booklist',
-        'lms' => '/lms',
-    ];
-
-
-?>
-
-<?php include("regions/header.php"); ?>
+<?php require_once("./regions/header.php"); ?>
+<?php require_once("./core/db.php"); ?>
 
 <section>
     <div id="screen">
@@ -23,4 +9,4 @@
     </div>
 </section>
 
-<?php include("regions/footer.php"); ?>
+<?php require_once("./regions/footer.php"); ?>
