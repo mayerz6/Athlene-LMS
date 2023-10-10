@@ -7,7 +7,7 @@
         'services' => '../services.php',
         'resources' => '../resources.php',
         'account' => '../login.php',
-        'booklist' => '../booklist.php',
+        'registration' => '../signup.php',
         'lms' => '../lms.php',
     ];
 
@@ -24,6 +24,7 @@
                         <li><a href="<?= $nav_links["resources"]; ?>">Resources</a>| </li>
                         <li><a href="<?= $nav_links["lms"]; ?>">LMS</a>| </li>
                         <li><a href="<?= $nav_links["account"]; ?>">Account</a>| </li>
+                        <li><a href="<?= $nav_links["registration"]; ?>">Join</a>| </li>
                     </ul>
                     <p class="copyright">&copy; Athlene Academics | All right reserved <?= date('Y'); ?>.</p>
                     <!-- <ul class="templateworld">

@@ -7,6 +7,7 @@
         'services' => '../services.php',
         'resources' => '../resources.php',
         'account' => '../login.php',
+        'registration' => '../signup.php',
         'booklist' => '../booklist.php',
         'lms' => '../lms.php',
     ];
@@ -37,6 +38,7 @@
                         <li><a href="<?= $nav_links["resources"] ?>">Resources</a></li>
                         <li><a href="<?= $nav_links["lms"] ?>">LMS</a></li>
                         <li><a href="<?= $nav_links["account"] ?>">Account</a></li>
+                        <li><a href="<?= $nav_links["registration"] ?>">Join</a></li>
                     </ul>
                     <div id="fastformPan">
                         <!-- <form action="#" method="get" class="formone">
