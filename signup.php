@@ -5,7 +5,10 @@
 <section>
     <div id="screen">
         <h1>Athlene Academics LMS | Account Registration | Start Developing Now!</h1>
-        <form><button><a href="tel:12462319428">Create Account</a></button></form> 
+        <?= print_r($_SERVER); ?>
+        <form>
+            <button><a href="tel:12462319428">Create Account</a></button>
+        </form> 
     </div>
 </section>
 
