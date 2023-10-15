@@ -13,7 +13,7 @@
     </div>
 </section>
 
-    <?php $students = $db1->fetchStudents($conn); ?>
+    <?php $students = $db1->fetchStudentRecords($conn); ?>
     <?php foreach($students as $student) : ?>
        <div class="student-block">
            <span><?= $student['firstname']; ?></span>

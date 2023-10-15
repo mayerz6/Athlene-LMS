@@ -3,7 +3,8 @@
 
 <?php
     if(isset($_POST['submit'])) :
-        var_dump($_POST); 
+        extract($_POST);
+        echo $firstname . " " . $lastname . " : " . $email;
     endif;
  ?>
 <section>
