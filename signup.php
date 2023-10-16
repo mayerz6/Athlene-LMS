@@ -1,18 +1,21 @@
+<?php include("./core/db.php"); ?>
+<?php include("./core/student.php"); ?>
 <?php require_once("./regions/header.php"); ?>
-<?php require_once("./core/db.php"); ?>
+
 
 <?php
     if(isset($_POST['submit'])) :
         extract($_POST);
-            $db1 = new DBConnect;
-            $conn = $db1->getInstance($config);
+            $conn = new DBConnect($config);
+            $stud = new Student($conn->dbInstance);
+            // $conn = $db1->getInstance($config);
            // echo $firstname . " " . $lastname . " : " . $email;
             $record['firstname'] = $firstname;
             $record['lastname'] = $lastname;
             $record['email'] = $email;
            
 
-            if($db1->addStudent($record, $conn)) :
+            if($stud->addStudent($record)) :
                 echo "Recorded stored within the database";
             else :
                 echo "Failed to input record data";
@@ -21,12 +24,15 @@
  ?>
 <section>
     <div id="screen">
-        <h1>Athlene Academics LMS | Account Registration | Start Developing Now!</h1>
+        <h1>Athlene Academics LMS | Student Registration | Start Developing Now!</h1>
         <?php //print_r($_SERVER); ?>
         <form action="signup.php" method="post">
-            <input type="text" name="firstname" />
-            <input type="text" name="lastname" />
-            <input type="text" name="email" />
+            <label for="firstname">First Name</label><br>
+            <input type="text" name="firstname" /><br>
+            <label for="lastname">Last Name</label><br>
+            <input type="text" name="lastname" /><br>
+            <label for="email">Email Address</label><br>
+            <input type="text" name="email" /><br><br>
             <input type="submit" name="submit" value="register" />
             <!-- <button><a href="tel:12462319428">Create Account</a></button> -->
         </form> 

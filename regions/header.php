@@ -23,7 +23,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">    
     <title>Athlene Academics Learning Management System</title>
-            <link rel="stylesheet" href="" type="text/css">
+            <link rel="stylesheet" href="../css/styles.css" type="text/css">
                     </head>
     <body>
     <div id="mainPan">
