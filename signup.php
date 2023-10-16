@@ -4,7 +4,19 @@
 <?php
     if(isset($_POST['submit'])) :
         extract($_POST);
-        echo $firstname . " " . $lastname . " : " . $email;
+            $db1 = new DBConnect;
+            $conn = $db1->getInstance($config);
+           // echo $firstname . " " . $lastname . " : " . $email;
+            $record['firstname'] = $firstname;
+            $record['lastname'] = $lastname;
+            $record['email'] = $email;
+           
+
+            if($db1->addStudent($record, $conn)) :
+                echo "Recorded stored within the database";
+            else :
+                echo "Failed to input record data";
+            endif;
     endif;
  ?>
 <section>

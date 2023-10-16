@@ -58,13 +58,13 @@ class DBConnect {
 
     public function addStudent($record, $conn){
         $query = "insert into students";
-        $query .= "('firstname', 'lastname', 'email, 'contact')";
-        $query .= "VALUES({$record['firstname']}, {$record['lastname']},";
-        $query .= "{$record['email']}, {$record['mobile']})";
+        $query .= "(firstname, lastname, email) ";
+        $query .= "VALUES('{$record['firstname']}', '{$record['lastname']}', ";
+        $query .= "'{$record['email']}');";
 
-        $exec = $conn->query($query);
+        // $exec = $conn->query($query);
 
-        if($exec === false) :
+        if($conn->query($query) === false) :
             // var_dump($this->db->errorInfo());    
             var_dump($conn->errorInfo());    
             return false;  
