@@ -90,7 +90,7 @@ section div#screen { margin: 0; padding: 0em 0 0em 2em; }
 #bodylowerLeftPan ul.list li{width:290px; height:20px;}
 #bodylowerLeftPan ul.list li a{height:20px; background:url(images/bullet1.gif) 0 3px no-repeat #fff; color:#000; line-height:20px; text-decoration:underline; padding:0 0 0 20px;}
 #bodylowerLeftPan ul.list li a:hover{background:url(images/bullet2.gif) 0 3px no-repeat #fff; color:#5E2401; line-height:20px; text-decoration:underline;}
-
+div.student-block { margin: .1em 0em .6em 1em; outline: 1px solid #000; }
 #bodylowerLeftPan p.more{background:url(images/more-line.gif) 0 90% repeat-x; padding:0px;}
 #bodylowerLeftPan p.more a{background:#fff; color:#CC0000; font:13px/14px "Trebuchet MS", Arial, Helvetica, sans-serif; font-weight:bold; text-decoration:none; margin:0 0 0 193px;}
 #bodylowerLeftPan p.more a:hover{background:#E3DDCD; color:#CC0000; text-decoration:none;}
