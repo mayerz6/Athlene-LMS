@@ -3,8 +3,6 @@
 
 <?php 
 
-    echo $_SERVER['SCRIPT_NAME'];
-
     if(isset($_POST['submit'])):
         var_dump($_POST);
         echo "<br />";
@@ -13,6 +11,7 @@
         echo $_POST['username'];
         echo "<br />";
         echo $_POST['password'];
+        header("location: dashboard.php");
     endif;
 ?>
 
@@ -23,15 +22,12 @@
             <form method="post" action="<?= $_SERVER['PHP_SELF']; ?>">
                 <fieldset>
                     <legend><small>Log in to view your custom learning resources!</small></legend>
-                   <div class="form-group">
-                    <label for="username">Enter your account username:</label>
-                    <input type="username" name="username" placeholder="Account Username" />
-                   </div>                   
-                   <div class="form-group">
-                   <label for="password">Enter your secure password:</label>    
-                   <input type="password" name="password" placeholder="Account Password" />
-                   </div>
-                    <hr />
+                    <br>
+                    <label for="username">Enter your account username</label><br>
+                    <input type="username" name="username" placeholder="Account Username" /><br><br>
+                   <label for="password">Enter your secure password:</label><br>
+                   <input type="password" name="password" placeholder="Account Password" /><br>
+                    <hr>
                    <input type="submit" name="submit" />
                    <!-- <input type="" name="reset" /> -->
                 </fieldset>

@@ -8,8 +8,12 @@
         extract($_POST);
             $conn = new DBConnect($config);
             $stud = new Student($conn->dbInstance);
+<<<<<<< HEAD
             // $conn = $db1->getInstance($config);
            // echo $firstname . " " . $lastname . " : " . $email;
+=======
+
+>>>>>>> dev-student-page
             $record['firstname'] = $firstname;
             $record['lastname'] = $lastname;
             $record['email'] = $email;
@@ -25,8 +29,15 @@
 <section>
     <div id="screen">
         <h1>Athlene Academics LMS | Student Registration | Start Developing Now!</h1>
+<<<<<<< HEAD
         <?php //print_r($_SERVER); ?>
         <form action="signup.php" method="post">
+=======
+        <form action="signup.php" method="post">
+            <fieldset>
+                <legend>Enter requisite information below</legend>
+                <br>
+>>>>>>> dev-student-page
             <label for="firstname">First Name</label><br>
             <input type="text" name="firstname" /><br>
             <label for="lastname">Last Name</label><br>
@@ -34,7 +45,7 @@
             <label for="email">Email Address</label><br>
             <input type="text" name="email" /><br><br>
             <input type="submit" name="submit" value="register" />
-            <!-- <button><a href="tel:12462319428">Create Account</a></button> -->
+            </fieldset>
         </form> 
     </div>
 </section>
