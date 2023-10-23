@@ -8,6 +8,7 @@
         extract($_POST);
             $conn = new DBConnect($config);
             $stud = new Student($conn->dbInstance);
+            
             $record['firstname'] = $firstname;
             $record['lastname'] = $lastname;
             $record['email'] = $email;

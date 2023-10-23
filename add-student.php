@@ -4,8 +4,8 @@
 
 <?php
 
-if(isset($_POST['submit'])) :
-    // var_dump($_POST);
+if(isset($_POST['submit']) && $_POST['email'] != null) :
+    // Must TEST for empty FORM fields via 
      extract($_POST);
     
         $conn = new DBConnect($config);
@@ -24,7 +24,8 @@ if(isset($_POST['submit'])) :
         else:
             echo "Failed to load record into database";
         endif;
-
+else: 
+    echo "**** Please ensure ALL required fields have been provided ****";
 endif;  
 
 ?>
@@ -45,15 +46,15 @@ endif;
             <label for="email">Primary Email Address</label><br>
             <input type="email" name="email" id="email" /><br>
             <label for="mobile">Primary Mobile Number</label><br>
-            <input type="tel" name="mobile" /><br>
-            <label for="courseId">Lessons Subject</label><br>
-            <select id="tCourse" name="courseId">
+            <input type="tel" name="mobile" id="mobile" /><br>
+            <label for="courseId">Lessons Subject</label><br><br>
+            <select id="tCourse" name="courseId" id="courseId">
                 <option value="maths">Mathematics</option>
                 <option value="english-lit">English Literature</option>
                 <option value="english-lan">English Language</option>
                 <option value="it">Information Technology</option>
             </select>
-
+            <br><br>
             <input type="submit" name="submit" value="register" />
             </fieldset>
         </form> 

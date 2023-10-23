@@ -7,11 +7,12 @@
 
  
     if(isset($_POST['submit'])):
-        extract($_POST)
-        $auth = new AuthUser();
+        extract($_POST);
+    
+        $auth = new Auth();
 
         $record['username'] = $username;
-        $record['password'] = hash($password);
+        $record['password'] = $password;
    
     endif;
 ?>
@@ -23,14 +24,10 @@
             <form method="post" action="<?= $_SERVER['PHP_SELF']; ?>">
                 <fieldset>
                     <legend><small>Log in to view your custom learning resources!</small></legend>
-                   <div class="form-group">
-                    <label for="username">Enter your account username:</label>
-                    <input type="username" name="username" id="username" placeholder="Account Username" />
-                   </div>                   
-                   <div class="form-group">
-                   <label for="password">Enter your secure password:</label>    
-                   <input type="password" name="password" id="password" placeholder="Account Password" />
-                   </div>
+                    <label for="username">Enter your account username:</label><br>
+                    <input type="username" name="username" id="username" placeholder="Account Username" required /><br><br>
+                   <label for="password">Enter your secure password:</label><br>    
+                   <input type="password" name="password" id="password" placeholder="Account Password" required /><br><br>
                     <hr />
                    <input type="submit" name="submit" />
                    <!-- <input type="" name="reset" /> -->
