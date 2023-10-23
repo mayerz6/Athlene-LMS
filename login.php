@@ -7,11 +7,12 @@
 
  
     if(isset($_POST['submit'])):
-        extract($_POST)
-        $auth = new AuthUser();
+        extract($_POST);
+    
+        //$auth = new AuthUser();
 
         $record['username'] = $username;
-        $record['password'] = hash($password);
+        $record['password'] = $password;
    
     endif;
 ?>
