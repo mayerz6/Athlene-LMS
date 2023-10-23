@@ -27,15 +27,11 @@
 <section>
     <div id="screen">
     <h1>Athlene Academics LMS | Tutor Registration | Managing Your Students Now!</h1>
-<<<<<<< HEAD
-        <?php //print_r($_SERVER); ?>
-        <form action="add-tutor.php" method="post">
-=======
-        <form action="add-tutor.php" method="post">
+
+    <form action="add-tutor.php" method="post">
             <fieldset>
                 <legend>Enter requisite tutor information below</legend>
                 <br>
->>>>>>> dev-student-page
             <label for="firstname">First Name</label><br>
             <input type="text" name="firstname" /><br>
             <label for="lastname">Last Name</label><br>
@@ -45,10 +41,7 @@
             <label for="mobile">Mobile Number</label><br>
             <input type="text" name="mobile" /><br><br>
             <input type="submit" name="submit" value="register" />
-<<<<<<< HEAD
-=======
             </fieldset>
->>>>>>> dev-student-page
         </form> 
     </div>
 </section>

@@ -50,15 +50,9 @@ class Student{
 
     public function addStudent($record){
         $query = "insert into students";
-<<<<<<< HEAD
-        $query .= "(firstname, lastname, email) ";
-        $query .= "VALUES('{$record['firstname']}', '{$record['lastname']}', ";
-        $query .= "'{$record['email']}');";
-=======
         $query .= "(firstname, lastname, email, mobile, subject) ";
         $query .= "VALUES('{$record['firstname']}', '{$record['lastname']}', ";
         $query .= "'{$record['email']}', '{$record['mobile']}', '{$record['subject']}');";
->>>>>>> dev-student-page
 
         // $exec = $conn->query($query);
         if(self::$dbInstance->query($query) === false) :
