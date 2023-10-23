@@ -28,7 +28,7 @@
     <div id="screen">
     <h1>Athlene Academics LMS | Tutor Registration | Managing Your Students Now!</h1>
 
-    <form action="add-tutor.php" method="post">
+        <form action="add-tutor.php" method="post">
             <fieldset>
                 <legend>Enter requisite tutor information below</legend>
                 <br>
@@ -39,13 +39,15 @@
             <label for="email">Email Address</label><br>
             <input type="text" name="email" required /><br><br>
             <label for="mobile">Mobile Number</label><br>
-            <input type="text" name="mobile" /><br><br>
+            <input type="number" name="mobile" /><br><br>
+            <label for="day">Start Date
+            <input type="text" name="day" id="day" maxlength="2" required /> 
+            <input type="text" month="month" maxlength="2" required /> 
+            <input type="text" month="year" maxlength="2" required /> 
+            </label><br>
             <input type="submit" name="submit" value="register" required />
             </fieldset>
         </form> 
     </div>
 </section>
 
-
-
-<?php require_once("./regions/footer.php"); ?>
