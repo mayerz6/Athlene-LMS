@@ -1,10 +1,33 @@
 <?php
+<<<<<<< HEAD
 
 class Student{
 
     function __construct()
     {
         
+=======
+// require_once("./core/db.php");
+
+class Student{
+
+    private static $dbInstance;
+    private $student_id;
+    private $firstname;
+    private $lastname;
+    private $email;
+    private $mobile;
+    private $password;
+    private $pwd_salt;
+    private $enrollment_date;
+    private $subject;
+
+    function __construct($conn)
+    {
+        if(isset($conn)):
+        self::$dbInstance = $conn;
+        endif;
+>>>>>>> main
     }
 
     
@@ -36,12 +59,20 @@ class Student{
 
     public function addStudent($record){
         $query = "insert into students";
+<<<<<<< HEAD
         $query .= "(firstname, lastname, email) ";
         $query .= "VALUES('{$record['firstname']}', '{$record['lastname']}', ";
         $query .= "'{$record['email']}');";
 
         // $exec = $conn->query($query);
 
+=======
+        $query .= "(firstname, lastname, email, mobile, subject) ";
+        $query .= "VALUES('{$record['firstname']}', '{$record['lastname']}', ";
+        $query .= "'{$record['email']}', '{$record['mobile']}', '{$record['subject']}');";
+
+        // $exec = $conn->query($query);
+>>>>>>> main
         if(self::$dbInstance->query($query) === false) :
             // var_dump($this->db->errorInfo());    
             var_dump(self::$dbInstance->errorInfo());    

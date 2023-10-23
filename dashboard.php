@@ -1,9 +1,19 @@
+<<<<<<< HEAD
+=======
+<?php include("./core/student.php"); ?>
+>>>>>>> main
         <?php include("./regions/header.php"); ?>
         <?php include("./core/db.php"); ?>
 
+<<<<<<< HEAD
             <?php $db = new DBConnect($config); ?>
             <?php if(isset($_SESSION['id'])) :  ?>
             <?php $student = $db->fetchStudentRecord($conn, $_SESSION['id'], "firstname"); ?>
+=======
+            <?php $stud = new Student($config); ?>
+            <?php if(isset($_SESSION['id'])) :  ?>
+            <?php $student = $stud->fetchStudentRecord($_SESSION['id'], "firstname"); ?>
+>>>>>>> main
             <?php else :?>
             <?php $student = null; ?>
             <?php endif; ?>

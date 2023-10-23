@@ -18,11 +18,11 @@
               <div id="footerPan">
                     <ul>
                         <li><a href="<?= $nav_links["homepage"]; ?>">Home</a>| </li>
-                        <li><a href="<?= $nav_links["about"]; ?>">About Us</a>| </li>
+                        <!-- <li><a href="<?= $nav_links["about"]; ?>">About Us</a>| </li> -->
                         <li><a href="<?= $nav_links["contact"]; ?>">Contact</a> </li>
-                        <li><a href="<?= $nav_links["services"]; ?>">Our Services</a>| </li>
-                        <li><a href="<?= $nav_links["resources"]; ?>">Resources</a>| </li>
-                        <li><a href="<?= $nav_links["lms"]; ?>">LMS</a>| </li>
+                        <!-- <li><a href="<?= $nav_links["services"]; ?>">Our Services</a>| </li> -->
+                        <!-- <li><a href="<?= $nav_links["resources"]; ?>">Resources</a>| </li> -->
+                        <!-- <li><a href="<?= $nav_links["lms"]; ?>">LMS</a>| </li> -->
                         <li><a href="<?= $nav_links["account"]; ?>">Account</a>| </li>
                         <li><a href="<?= $nav_links["registration"]; ?>">Join</a>| </li>
                     </ul>
