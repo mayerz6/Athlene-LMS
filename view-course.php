@@ -14,23 +14,21 @@ if(isset($_GET['id'])):
     extract($_GET);
     
     $conn = new DBConnect($config);
-    $course = new Course($conn->dbInstance);
+    $course = new Course();
 
-        $record = $course->fetchCourseRecordById($id); 
-        if($record):
-            echo var_dump($record);
+        $records = $course->fetchCourseRecordById($id, $conn->dbInstance); 
+        if($records):
+            print_r($records);
              ?>
              <br>
              <br>
              <br>
-            <span><?php echo $record[0]["start_date"]; ?></span>
+             <?php foreach($records as $record) : ?>
+            <span><?php echo $record->start_date; ?></span>
             <span> : </span>
-            <span><?php echo $record[0]["title"]; ?></span>
-            <p><?php echo $record[0]["description"]; ?></p>
-            <!-- <pre>
-                <?php // var_dump($record); ?>
-            </pre> -->
-    <?php
+            <span><?php echo $record->title; ?></span>
+            <p><?php echo $record->description; ?></p>
+               <?php endforeach; 
         endif;
 endif;
 ?>

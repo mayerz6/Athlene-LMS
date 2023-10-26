@@ -10,14 +10,16 @@ class Course{
     public $end_date;
     public $tutor_id;
 
-    function __construct($conn)
+    
+    function __construct()
     {
-        if(isset($conn)):
-        self::$dbInstance = $conn;
-        endif;
+        // if(isset($conn)):
+        // self::$dbInstance = $conn;
+        // endif;
     }
 
-    public function fetchCourseRecords(){
+    public function fetchCourseRecords($conn){
+        self::$dbInstance = $conn;
         $query = "select * from courses";
         $records = self::$dbInstance->query($query);
         if($records === false) :
@@ -29,19 +31,21 @@ class Course{
         endif;
     }
 
-    public function fetchCourseRecordsById($id){
-    /* Traditional engagement with DB via FETCH_ASSOC functionality */
-        $query = "select * from courses
-                    where course_id = " . $id;
-        $records = self::$dbInstance->query($query);
+    // public function fetchCourseRecordsById($id, $conn){
+    //     self::$dbInstance = $conn;
+    // /* Traditional engagement with DB via FETCH_ASSOC functionality */
+    //     $query = "select * from courses
+    //                 where course_id = " . $id;
+    //    // $records = self::$dbInstance->query($query);
+    //     $records = self::$dbInstance->query($query);
        
-        if($records === false) :
-            var_dump(self::$dbInstance->errorInfo());
-            return false;
-        else:
-            return $records->fetchAll(PDO::FETCH_ASSOC);
-        endif;
-    }
+    //     if($records === false) :
+    //         var_dump(self::$dbInstance->errorInfo());
+    //         return false;
+    //     else:
+    //         return $records->fetchAll(PDO::FETCH_ASSOC);
+    //     endif;
+    // }
 
     static protected function objectInstantiate($record){
         $object = new self;
@@ -53,7 +57,8 @@ class Course{
         return $object;
     }
 
-    public function fetchCourseRecordById($id){
+    public function fetchCourseRecordById($id, $conn){
+        self::$dbInstance = $conn;
         $query = "SELECT * FROM courses WHERE course_id = :id";
         $stmt = self::$dbInstance->prepare($query);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
@@ -64,10 +69,11 @@ class Course{
             if ($stmt->execute()) {
                 // Fetch the result into the 'Course' class
                // return $stmt->fetchAll(PDO::FETCH_ASSOC);
-               while($record = $stmt->fetch()){
+                while($record = $stmt->fetch()){
+             //while($record = $stmt->fetchAll(PDO::FETCH_ASSOC)){
                     $object_array[] = self::objectInstantiate($record);
                }
-               $stmt->free();
+              // $stmt->free();
                return $object_array;
                 /* Conversion from ASSOCIATIVE ARRAY to OBJECT containing table
                 records */
@@ -79,7 +85,10 @@ class Course{
         
     }
 
-    public function addCourse($record){
+    public function addCourse($record, $conn){
+
+        self::$dbInstance = $conn;
+
         $query = "insert into courses";
         $query .= "(title, description, tutor_id) ";
         $query .= "VALUES('{$record['title']}', '{$record['description']}', ";
