@@ -5,9 +5,17 @@
 <?php
 
     if(isset($_POST['submit'])):
-        //extract($_POST);
+        
+        extract($_POST);
+        $conn = new DBConnect($config);
+        $course = new Course();
 
-        var_dump($_POST);
+        $record['title'] = $course_title;
+        $record['description'] = $course_description;
+        $record['start_date'] = $start_date;
+      
+        // echo $course->addCourse($record, $conn->dbInstance) ? "Record successfully stored within the database" : "Failed to load record into database!!!";
+        var_dump($record);
 
     endif;
 

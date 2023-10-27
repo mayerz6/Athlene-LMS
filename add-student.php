@@ -4,12 +4,12 @@
 
 <?php
 
-if(isset($_POST['submit']) && $_POST['email'] != null) :
+if(isset($_POST['submit'])) :
     // Must TEST for empty FORM fields via 
      extract($_POST);
     
         $conn = new DBConnect($config);
-        $topic = new Student($conn->dbInstance);
+        $student = new Student();
 
         $record['firstname'] = $firstname;
         $record['lastname'] = $lastname;
@@ -19,11 +19,12 @@ if(isset($_POST['submit']) && $_POST['email'] != null) :
         /* CourseID ==> Tutelage Subject Name */
        // var_dump($record);
 
-        if($topic->addStudent($record)) :
-            echo "Record successfully stored within the database";
-        else:
-            echo "Failed to load record into database";
-        endif;
+       echo $student->addStudent($record, $conn->dbInstance) ? "Record successfully stored within the database" : "Failed to load record into database";
+        // if($student->addStudent($record, $conn->dbInstance)) :
+        //     echo "Record successfully stored within the database";
+        // else:
+        //     echo "Failed to load record into database";
+        // endif;
 else: 
     echo "**** Please ensure ALL required fields have been provided ****";
 endif;  

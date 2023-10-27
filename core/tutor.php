@@ -11,14 +11,15 @@ class Tutor{
     private $password;
     private $pwd_salt;
 
-    function __construct($conn)
+    function __construct()
     {
-        if(isset($conn)):
-        self::$dbInstance = $conn;
-        endif;
+        // if(isset($conn)):
+        // self::$dbInstance = $conn;
+        // endif;
     }
 
-    public function fetchTutorRecords(){
+    public function fetchTutorRecords($conn){
+        self::$dbInstance = $conn;
         $query = "select * from tutors";
         $records = self::$dbInstance->query($query);
         if($records === false) :
@@ -30,7 +31,8 @@ class Tutor{
         endif;
     }
 
-    public function addTutor($record){
+    public function addTutor($record, $conn){
+        self::$dbInstance = $conn;
         $query = "insert into tutors";
         $query .= "(firstname, lastname, email, mobile) ";
         $query .= "VALUES('{$record['firstname']}', '{$record['lastname']}', ";
