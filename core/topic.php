@@ -13,13 +13,11 @@ class Topic{
 
     function __construct($conn)
     {
-        if(isset($conn)):
-            self::$dbInstance = $conn;
-            endif;
+        
     }
 
-    public function addTopic($record){
-
+    public function addTopic($record, $conn){
+        self::$dbInstance = $conn;
         $query = "insert into topics";
         $query .= "(title, description, course_id, tutor_id) ";
         $query .= "VALUES('{$record['title']}', '{$record['description']}', ";

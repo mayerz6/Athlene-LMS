@@ -4,25 +4,47 @@
 class Student{
 
     private static $dbInstance;
-    private $student_id;
-    private $firstname;
-    private $lastname;
-    private $email;
-    private $mobile;
-    private $password;
-    private $pwd_salt;
-    private $enrollment_date;
-    private $subject;
+    public $student_id;
+    public $firstname;
+    public $lastname;
+    public $email;
+    public $mobile;
+    public $password;
+    public $pwd_salt;
+    public $enrollment_date;
+    public $subject;
 
-    function __construct($conn)
+    function __construct($args=[])
     {
-        if(isset($conn)):
-        self::$dbInstance = $conn;
-        endif;
+        $this->student_id = $args['student_id'] ?? '';
+        $this->firstname = $args['firstname'] ?? '';
+        $this->lastname = $args['lastname'] ?? '';
+        $this->email = $args['email'] ?? '';
+        $this->mobile = $args['mobile'] ?? '';
+        $this->password = $args['password'] ?? '';
+        $this->pwd_salt = $args['pwd_salt'] ?? '';
+        $this->enrollment_date = $args['enrollment_date'] ?? '';
+        $this->subject = $args['subject'] ?? '';
+        self::$dbInstance = $args['dbConnect'] ?? '';
+        // if(isset($conn)):
+        // self::$dbInstance = $conn;
+        // endif;
+    }
+
+
+    static protected function objectInstantiate($record){
+        $object = new self;
+        foreach($record as $property => $value){
+            if(property_exists($object, $property)){
+                $object->$property = $value;
+            }
+        }
+        return $object;
     }
 
     
     public function fetchStudentRecords(){
+       // self::$dbInstance = $conn;
         $query = "select * from students";
         // $records = $this->db->query($query);
         $records = self::$dbInstance->query($query);
@@ -37,18 +59,25 @@ class Student{
 
     }
 
-    public function fetchStudentRecord($id, $column){
-
-        $query = "select $column from students where student_id = :id";
+    public function fetchStudentRecordById($id, $conn){
+        $query = "SELECT * from students where student_id = :id";
         $stmt = self::$dbInstance->prepare($query);
         $stmt->bindValue(':id', $id, PDO::PARAM_INT);
 
-        if($stmt->execute()){
-            return $stmt->fetch(PDO::FETCH_ASSOC);
+        try{
+            if($stmt->execute()){
+                while($record = $stmt->fetch()){
+                    $object_array[] = self::objectInstantiate($record);
+                }
+                return $object_array;
+            }
+        } catch(PDOException $e){
+            echo $e->getMessage();
         }
+      
     }
 
-    public function addStudent($record){
+    public function addStudent($record, $conn){
         $query = "insert into students";
         $query .= "(firstname, lastname, email, mobile, subject) ";
         $query .= "VALUES('{$record['firstname']}', '{$record['lastname']}', ";
