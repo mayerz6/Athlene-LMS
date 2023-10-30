@@ -8,19 +8,20 @@ if(isset($_POST['submit'])) :
     // Must TEST for empty FORM fields via 
      extract($_POST);
     
-        $conn = new DBConnect($config);
-        $student = new Student();
-
-        $record['firstname'] = $firstname;
-        $record['lastname'] = $lastname;
-        $record['email'] = $email;
-        $record['mobile'] = $mobile;
-        $record['subject'] = $courseId;
-        $record['dbConnect'] = $conn->dbInstance;
-        /* CourseID ==> Tutelage Subject Name */
+     $conn = new DBConnect($config);
+     
+     $record['firstname'] = $firstname;
+     $record['lastname'] = $lastname;
+     $record['email'] = $email;
+     $record['mobile'] = $mobile;
+     $record['subject'] = $courseId;
+     $record['dbConnect'] = $conn->dbInstance;
+    
+     $student = new Student($record);
+     /* CourseID ==> Tutelage Subject Name */
        // var_dump($record);
 
-       echo $student->addStudent() ? "Record successfully stored within the database" : "Failed to load record into database";
+       echo $student->addStudent($record) ? "Record successfully stored within the database" : "Failed to load record into database";
         // if($student->addStudent($record, $conn->dbInstance)) :
         //     echo "Record successfully stored within the database";
         // else:
@@ -36,7 +37,6 @@ endif;
 <section>
     <div id="screen">
          <h1>Athlene Academics LMS | Add Student Records</h1>
-        <?php //print_r($_SERVER); ?>
         <form action="<?= $_SERVER['PHP_SELF']; ?>" method="post">
             <fieldset>
                 <legend>Enter requisite student information below</legend>

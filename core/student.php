@@ -7,12 +7,12 @@ class Student{
     public $student_id;
     public $firstname;
     public $lastname;
+    public $subject;
     public $email;
     public $mobile;
     public $password;
     public $pwd_salt;
     public $enrollment_date;
-    public $subject;
 
     function __construct($args=[])
     {
@@ -77,11 +77,11 @@ class Student{
       
     }
 
-    public function addStudent($record, $conn){
+    public function addStudent($record){
         $query = "insert into students";
         $query .= "(firstname, lastname, email, mobile, subject) ";
-        $query .= "VALUES('{$record['firstname']}', '{$record['lastname']}', ";
-        $query .= "'{$record['email']}', '{$record['mobile']}', '{$record['subject']}');";
+        $query .= "VALUES('{$this->firstname}', '{$this->lastname}', ";
+        $query .= "'{$this->email}', '{$this->mobile}', '{$this->subject}');";
 
         // $exec = $conn->query($query);
         if(self::$dbInstance->query($query) === false) :
