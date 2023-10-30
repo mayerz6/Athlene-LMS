@@ -22,11 +22,7 @@ if(isset($_POST['submit'])) :
        // var_dump($record);
 
        echo $student->addStudent($record) ? "Record successfully stored within the database" : "Failed to load record into database";
-        // if($student->addStudent($record, $conn->dbInstance)) :
-        //     echo "Record successfully stored within the database";
-        // else:
-        //     echo "Failed to load record into database";
-        // endif;
+  
 else: 
     echo "**** Please ensure ALL required fields have been provided ****";
 endif;  
