@@ -13,6 +13,15 @@ class Student{
     public $pwd_salt;
     public $enrollment_date;
     public $subject;
+    public $student_id;
+    public $firstname;
+    public $lastname;
+    public $email;
+    public $mobile;
+    public $password;
+    public $pwd_salt;
+    public $enrollment_date;
+    public $subject;
 
     function __construct($args=[])
     {

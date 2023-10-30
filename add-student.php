@@ -5,6 +5,7 @@
 <?php
 
 if(isset($_POST['submit'])) :
+if(isset($_POST['submit'])) :
     // Must TEST for empty FORM fields via 
      extract($_POST);
     
