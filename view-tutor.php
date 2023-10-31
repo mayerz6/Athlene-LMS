@@ -10,14 +10,14 @@
 
 <?php
 
-if($_SESSION(['tutor_id'])):
-   // extract($_GET);
+if(isset($_GET['id'])):
+    extract($_GET);
     
     $conn = new DBConnect($config);
     $record['dbConnect'] = $conn->dbInstance;
     $tutor = new Tutor($record);
 
-        $records = $tutor->fetchTutorRecordById($_SESSION['tutor_id']); 
+        $records = $tutor->fetchTutorRecordById($id); 
         if($records):
             print_r($records);
              ?>

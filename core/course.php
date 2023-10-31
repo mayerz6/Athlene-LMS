@@ -11,11 +11,15 @@ class Course{
     public $tutor_id;
 
     
-    function __construct()
+    function __construct($args=[])
     {
-        // if(isset($conn)):
-        // self::$dbInstance = $conn;
-        // endif;
+     $this->title = $args['title'] ?? '';
+     $this->description = $args['description'] ?? '';
+     $this->start_date = $args['start_date'] ?? '';
+     $this->end_date = $args['end_date'] ?? '';
+     $this->tutor_id = $args['tutor_id'] ?? '';
+     self::$dbInstance = $args['dbConnect'] ?? '';
+
     }
 
     public function fetchCourseRecords($conn){
@@ -31,21 +35,18 @@ class Course{
         endif;
     }
 
-    // public function fetchCourseRecordsById($id, $conn){
-    //     self::$dbInstance = $conn;
-    // /* Traditional engagement with DB via FETCH_ASSOC functionality */
-    //     $query = "select * from courses
-    //                 where course_id = " . $id;
-    //    // $records = self::$dbInstance->query($query);
-    //     $records = self::$dbInstance->query($query);
-       
-    //     if($records === false) :
-    //         var_dump(self::$dbInstance->errorInfo());
-    //         return false;
-    //     else:
-    //         return $records->fetchAll(PDO::FETCH_ASSOC);
-    //     endif;
-    // }
+    public static function lastId(){
+        $query = "SELECT course_id FROM courses ORDER BY course_id DESC LIMIT 1";
+        $records = self::$dbInstance->query($query);
+        if($records === false) :
+            var_dump(self::$dbInstance->errorInfo());
+            return false;
+        else :
+            $id = $records->fetchAll(PDO::FETCH_ASSOC);
+            return $id[0]['course_id'];
+        endif;
+
+    }
 
     static protected function objectInstantiate($record){
         $object = new self;
@@ -85,14 +86,12 @@ class Course{
         
     }
 
-    public function addCourse($record, $conn){
-
-        self::$dbInstance = $conn;
+    public function addCourse(){
 
         $query = "insert into courses";
         $query .= "(title, description, tutor_id) ";
-        $query .= "VALUES('{$record['title']}', '{$record['description']}', ";
-        $query .= "'{$record['tutor_id']}');";
+        $query .= "VALUES('{$this->title}', '{$this->description}', ";
+        $query .= "'{$this->tutor_id}');";
 
         // $exec = $conn->query($query);
         if(self::$dbInstance->query($query) === false) :
@@ -100,7 +99,8 @@ class Course{
             var_dump(self::$dbInstance->errorInfo());    
             return false;  
         else :
-            return true;
+            // return true;
+            return self::lastId();
         endif;
     }
 

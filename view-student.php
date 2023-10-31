@@ -11,12 +11,14 @@
 <?php
 
 if(isset($_GET['id'])):
-    extract($_GET);
+   extract($_GET);
     
     $conn = new DBConnect($config);
-    $student = new Student();
+    $record['dbConnect'] = $conn->dbInstance;
+    
+    $student = new Student($record);
 
-        $records = $student->fetchStudentRecordById($id, $conn->dbInstance); 
+        $records = $student->fetchStudentRecordById($id); 
         if($records):
             print_r($records);
              ?>

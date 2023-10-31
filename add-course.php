@@ -9,8 +9,6 @@
         
         extract($_POST);
         $conn = new DBConnect($config);
-        $course = new Course();
-        
         
         $record['title'] = $course_title;
         $record['description'] = $course_description;
@@ -19,12 +17,13 @@
         $record['tutor_id'] = $tutorName;
         $record['dbConnect'] = $conn->dbInstance;
         
-        $tutor = new Tutor($record);
-        var_dump(Tutor::getTutorIdByName($tutorName));
+        $course = new Course($record);
+        $res = $course->addCourse();
 
-      
-        // echo $course->addCourse($record, $conn->dbInstance) ? "Record successfully stored within the database" : "Failed to load record into database!!!";
-       // var_dump($record);
+        if($course->addCourse()) :
+     
+             header('Location: ./view-course.php?id=' . $res);
+        endif;
 
     endif;
 

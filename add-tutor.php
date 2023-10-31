@@ -13,14 +13,16 @@
         $record['email'] = $email;
         $record['mobile'] = $mobile;
         $record['dbConnect'] = $conn->dbInstance;
-        var_dump($record);
+      //  var_dump($record);
         
         $tutor = new Tutor($record);
       // echo $stud->addTutor($conn->dbInstance) ? "Recorded stored within the database" : "Failed to input record data";
-       if($tutor->addTutor()) :
-        $_SESSION['tutor_id'] =  $tutor->addTutor();
+      $res = $tutor->addTutor();
 
-        header('Location: ./view-tutor.php?id=/' . $_SESSION['tutor_id']);
+      if($tutor->addTutor()) :
+       // $_SESSION['tutor_id'] =  $tutor->addTutor();
+
+        header('Location: ./view-tutor.php?id=' . $res);
        endif;
         // if($stud->addTutor($record, $conn->dbInstance)) :
         //     echo "Recorded stored within the database";

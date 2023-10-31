@@ -20,8 +20,13 @@ if(isset($_POST['submit'])) :
      $student = new Student($record);
      /* CourseID ==> Tutelage Subject Name */
        // var_dump($record);
-
-       echo $student->addStudent($record) ? "Record successfully stored within the database" : "Failed to load record into database";
+    $res = $student->addStudent($record);
+      // echo $student->addStudent($record) ? "Record successfully stored within the database" : "Failed to load record into database";
+      if($res) :
+            header("Location: ./view-student.php?id=" . $res );
+      else:
+        echo $res;
+      endif;
   
 else: 
     echo "**** Please ensure ALL required fields have been provided ****";

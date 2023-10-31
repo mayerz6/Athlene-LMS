@@ -26,9 +26,7 @@ class Student{
         $this->enrollment_date = $args['enrollment_date'] ?? '';
         $this->subject = $args['subject'] ?? '';
         self::$dbInstance = $args['dbConnect'] ?? '';
-        // if(isset($conn)):
-        // self::$dbInstance = $conn;
-        // endif;
+ 
     }
 
 
@@ -42,6 +40,18 @@ class Student{
         return $object;
     }
 
+    public static function lastId(){
+        $query = "SELECT student_id FROM students ORDER BY student_id DESC LIMIT 1";
+        $records = self::$dbInstance->query($query);
+        if($records === false) :
+            var_dump(self::$dbInstance->errorInfo());
+            return false;
+        else :
+            $id = $records->fetchAll(PDO::FETCH_ASSOC);
+            return $id[0]['student_id'];
+        endif;
+
+    }
     
     public function fetchStudentRecords(){
        // self::$dbInstance = $conn;
@@ -59,7 +69,7 @@ class Student{
 
     }
 
-    public function fetchStudentRecordById($id, $conn){
+    public function fetchStudentRecordById($id){
         $query = "SELECT * from students where student_id = :id";
         $stmt = self::$dbInstance->prepare($query);
         $stmt->bindValue(':id', $id, PDO::PARAM_INT);
@@ -77,7 +87,7 @@ class Student{
       
     }
 
-    public function addStudent($record){
+    public function addStudent(){
         $query = "insert into students";
         $query .= "(firstname, lastname, email, mobile, subject) ";
         $query .= "VALUES('{$this->firstname}', '{$this->lastname}', ";
@@ -89,7 +99,8 @@ class Student{
             var_dump(self::$dbInstance->errorInfo());    
             return false;  
         else :
-            return true;
+            // return true;
+            return self::lastId();
         endif;
     }
 
