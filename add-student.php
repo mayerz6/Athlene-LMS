@@ -15,12 +15,14 @@ if(isset($_POST['submit'])) :
      $record['email'] = $email;
      $record['mobile'] = $mobile;
      $record['subject'] = $courseId;
+     $record['enrollment_date'] = $date ?? date("m/d/Y");
      $record['dbConnect'] = $conn->dbInstance;
-    
+
      $student = new Student($record);
      /* CourseID ==> Tutelage Subject Name */
-       // var_dump($record);
-    $res = $student->addStudent($record);
+        // var_dump($record);
+    
+    $res = $student->addStudent();
       // echo $student->addStudent($record) ? "Record successfully stored within the database" : "Failed to load record into database";
       if($res) :
             header("Location: ./view-student.php?id=" . $res );
@@ -50,6 +52,8 @@ endif;
             <input type="email" name="email" id="email" /><br>
             <label for="mobile">Primary Mobile Number</label><br>
             <input type="tel" name="mobile" id="mobile" /><br>
+            <label for="date">Enrollment Date</label><br>
+            <input type="date" name="date" id="date" /><br><br>
             <label for="courseId">Lessons Subject</label><br><br>
             <select id="tCourse" name="courseId" id="courseId">
                 <option value="maths">Mathematics</option>

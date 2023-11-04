@@ -1,7 +1,8 @@
 <?php include("./core/db.php"); ?>
 <?php include("./core/student.php"); ?>
-<?php require_once("./regions/header.php"); ?>
+<?php $title = "Account Registration | Learning At Your Pace"; ?>
 
+<?php require_once("./regions/header.php"); ?>
 
 <?php
     if(isset($_POST['submit'])) :
@@ -26,14 +27,16 @@
         <h1>Athlene Academics LMS | Student Registration | Start Developing Now!</h1>
         <form action="signup.php" method="post">
             <fieldset>
-                <legend>Enter requisite information below</legend>
-                <br>
+                <legend><small>Enter requisite information below</small></legend>
             <label for="firstname">First Name</label><br>
-            <input type="text" name="firstname" /><br>
+            <input type="text" name="firstname" id="firstname" /><br>
             <label for="lastname">Last Name</label><br>
-            <input type="text" name="lastname" /><br>
+            <input type="text" name="lastname" id="lastname" /><br>
             <label for="email">Email Address</label><br>
-            <input type="text" name="email" /><br><br>
+            <input type="text" name="email" id="email" /><br><br>
+            <label for="mobile">Contact Number</label><br>
+            <input type="text" name="mobile" id="mobile" /><br><br>
+
             <input type="submit" name="submit" value="register" />
             </fieldset>
         </form> 

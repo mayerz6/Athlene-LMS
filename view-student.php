@@ -12,23 +12,22 @@
 
 if(isset($_GET['id'])):
    extract($_GET);
-    
-    $conn = new DBConnect($config);
+
+   $conn = new DBConnect($config);
     $record['dbConnect'] = $conn->dbInstance;
     
     $student = new Student($record);
 
-        $records = $student->fetchStudentRecordById($id); 
+        $records = $student->fetchStudentRecordById((int) $_GET['id']); 
         if($records):
-            print_r($records);
+          //  print_r($records);
              ?>
              <br>
-             <br>
-             <br>
+             <h2>Athlene Academics Student Profile</h2>
              <?php foreach($records as $record) : ?>
             <span><?php echo $record->firstname; ?></span>
-            <span> : </span>
-            <span><?php echo $record->lastname; ?></span>
+            <span><?php echo $record->lastname; ?></span><br>
+            <span>Contact Info: Email: <?php echo $record->email; ?> | Mobile: <?php echo $record->mobile; ?>  </span>
             <p><?php echo $record->enrollment_date; ?></p>
                <?php endforeach; 
         endif;

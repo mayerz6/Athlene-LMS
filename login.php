@@ -2,15 +2,11 @@
 <?php require_once("./core/auth.php"); ?>
 <?php require_once("./regions/header.php"); ?>
 
-
 <?php 
-
  
     if(isset($_POST['submit'])):
         extract($_POST);
-    
         $auth = new Auth();
-
         $record['username'] = $username;
         $record['password'] = $password;
    

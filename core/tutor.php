@@ -47,7 +47,7 @@ class Tutor{
 
     public function fetchTutorRecords($conn){
         self::$dbInstance = $conn;
-        $query = "select * from tutors";
+        $query = "select * from tutors limit 5";
         $records = self::$dbInstance->query($query);
         if($records === false) :
             var_dump(self::$dbInstance->errorInfo());

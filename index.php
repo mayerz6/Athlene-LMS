@@ -1,6 +1,7 @@
 <?php include("./core/db.php"); ?>
 <?php include("./core/tutor.php"); ?>
 <?php include("./core/course.php"); ?>
+<?php $title = "Homepage | Learning At Your Pace"; ?>
 <?php require_once("./regions/header.php"); ?>
 
 <section>
@@ -33,5 +34,6 @@
            <span><?= $tutor['lastname']; ?></span>
        </div> 
     <?php endforeach; ?>
+        <?php $logged_in = true; ?>
 
 <?php require_once("./regions/footer.php"); ?>

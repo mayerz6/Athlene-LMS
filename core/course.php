@@ -3,6 +3,7 @@
 class Course{
 
     private static $dbInstance;
+    private static $db_columns = ['course_id', 'title', 'description', 'start_date', 'end_date', 'tutor_id'];
     public $course_id;
     public $title;
     public $description;
@@ -10,7 +11,6 @@ class Course{
     public $end_date;
     public $tutor_id;
 
-    
     function __construct($args=[])
     {
      $this->title = $args['title'] ?? '';
@@ -24,7 +24,7 @@ class Course{
 
     public function fetchCourseRecords($conn){
         self::$dbInstance = $conn;
-        $query = "select * from courses";
+        $query = "select * from courses limit 5";
         $records = self::$dbInstance->query($query);
         if($records === false) :
             var_dump(self::$dbInstance->errorInfo());

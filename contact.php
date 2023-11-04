@@ -1,4 +1,4 @@
-
+<?php $title = "Technical Support | Learning At Your Pace"; ?>
 <?php require_once("./regions/header.php"); ?>
 
 <section>
